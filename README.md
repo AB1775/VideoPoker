@@ -16,7 +16,7 @@ This is a Java-based implementation of **Jacks or Better Video Poker**, a popula
 - **Hand Evaluation**: (To be implemented) Determines the player's winnings based on the final hand.
 
 ### GUI Mockup
-
+<img src=demo.png></img>
 ### How to Play Jacks or Better Video Poker
 1. **Start the Game**:
    - Launch the game by running the `Main` class.
