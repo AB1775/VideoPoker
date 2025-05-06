@@ -1,5 +1,8 @@
 package com.videopoker;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class GameLogic {
     /* Game State Restrictions
      *  WAITING_FOR_BET: Player Must Place Valid Bet Before Initial Hand is Dealt
@@ -11,5 +14,17 @@ public class GameLogic {
         WAITING_FOR_BET,          // Player Places a Bet
         FIRST_DRAW,               // Initial 5-Card Hand is Dealt
         FINAL_DRAW,               // Player Has Chosen Hold Cards and is Dealt New Cards Hand is Evaluated and Bankroll is Updated
+    }
+
+    private GameState currentState;
+    private BankrollManager bankrollManager;
+    private Card[] currentHand;
+    private List<Integer> heldCards;
+
+    public GameLogic(BankrollManager bankrollManager) {
+        this.bankrollManager = bankrollManager;
+        this.currentHand = new Card[5];
+        this.heldCards = new ArrayList<>();
+        this.currentState = GameState.WAITING_FOR_BET;
     }
 }
