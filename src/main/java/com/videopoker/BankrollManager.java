@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class BankrollManager {
     public int currentCredits;
     public int currentBet;
-    
+
     Map<String, Integer> payoutMap = new HashMap<>( // Make Immutable
         Map.of(
             "Royal Flush", 250,
@@ -25,5 +25,28 @@ public class BankrollManager {
     public BankrollManager(int initialCredits) {
         this.currentCredits = initialCredits;
         this.currentBet = 0;
+    }
+
+    public int getCurrentCredits() {
+        return currentCredits;
+    }
+
+    public int getCurrentBet() {
+        return currentBet;
+    }
+
+    public void setCurrentCredits(int credits) {
+        this.currentCredits = credits;
+    }
+
+    public void setCurrentBet(int bet) {
+        this.currentBet = bet;
+    }
+
+    // Take the Player's Bet and Subtract from Current Credits
+    public void takeBet(int bet) {
+        this.currentBet = bet;
+        currentCredits = currentCredits - bet;
+        setCurrentCredits(currentCredits);
     }
 }
