@@ -50,4 +50,9 @@ public class Card {
         }
         return cardHand;
     }
+
+    // Get Card Images Based on Card Code Name - Card Assets from ImKennyYip
+    public String getCardImage(String cardCodeName) {
+        return "src/main/resources/cards/" + cardCodeName + ".png";
+    }
 }
