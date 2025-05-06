@@ -1,6 +1,7 @@
 package com.videopoker;
 
 import java.util.List;
+import java.util.Random;
 
 public class Card {
     public Object cardValue;
@@ -17,5 +18,12 @@ public class Card {
     public Card(Object cardValue, String cardSuit) {
         this.cardValue = cardValue;
         this.cardSuit = cardSuit;
+    }
+
+    // Random Card Generator
+    public Card() {
+        Random random = new Random();
+        this.cardValue = cardValuesList.get(random.nextInt(cardValuesList.size()));
+        this.cardSuit = String.valueOf(cardSuitsList.get(random.nextInt(cardSuitsList.size())));
     }
 }
