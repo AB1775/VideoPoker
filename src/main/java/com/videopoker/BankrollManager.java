@@ -4,6 +4,9 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class BankrollManager {
+    public int currentCredits;
+    public int currentBet;
+    
     Map<String, Integer> payoutMap = new HashMap<>( // Make Immutable
         Map.of(
             "Royal Flush", 250,
@@ -17,4 +20,10 @@ public class BankrollManager {
             "Jacks or Better", 1
         )
     );
+
+    // Constructor
+    public BankrollManager(int initialCredits) {
+        this.currentCredits = initialCredits;
+        this.currentBet = 0;
+    }
 }
