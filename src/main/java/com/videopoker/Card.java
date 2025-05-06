@@ -12,4 +12,10 @@ public class Card {
                                           'J', 'Q', 'K');
     
     List<Character> cardSuitsList = List.of('H', 'D', 'C', 'S');
+
+    // Card Constructor
+    public Card(Object cardValue, String cardSuit) {
+        this.cardValue = cardValue;
+        this.cardSuit = cardSuit;
+    }
 }
