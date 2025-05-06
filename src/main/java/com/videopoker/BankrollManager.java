@@ -57,4 +57,15 @@ public class BankrollManager {
         }
         return 0; // No payout for Loss
     }
+
+    // Increase Current Bet by One
+    public void increaseCurrentBet() {
+        // Logic to ++currentBet when Increase Bet Button is Clicked
+        ++currentBet;
+    }
+    // Decrease Current Bet by One
+    public void decreaseCurrentBet() {
+        // Logic to --currentBet when Decrease Bet Button is Clicked
+        --currentBet;
+    }
 }
