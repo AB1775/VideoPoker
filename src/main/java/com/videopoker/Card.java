@@ -41,4 +41,13 @@ public class Card {
     public String getCardCodeName() {
         return cardValue + "-" + cardSuit;
     }
+
+    // Populate Card Hand with Random Cards
+    public static Card[] populateCardHand(int handSize) {
+        Card[] cardHand = new Card[handSize];
+        for (int i = 0; i < cardHand.length; ++i) {
+            cardHand[i] = new Card();
+        }
+        return cardHand;
+    }
 }
