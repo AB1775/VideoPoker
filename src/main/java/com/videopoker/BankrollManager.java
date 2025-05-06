@@ -49,4 +49,12 @@ public class BankrollManager {
         currentCredits = currentCredits - bet;
         setCurrentCredits(currentCredits);
     }
+
+    // Payout Calculation
+    public int calculatePayout(String hand) {
+        if (payoutMap.containsKey(hand)) {
+            return payoutMap.get(hand) * currentBet;
+        }
+        return 0; // No payout for Loss
+    }
 }
