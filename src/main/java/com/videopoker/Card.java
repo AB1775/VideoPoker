@@ -26,4 +26,19 @@ public class Card {
         this.cardValue = cardValuesList.get(random.nextInt(cardValuesList.size()));
         this.cardSuit = String.valueOf(cardSuitsList.get(random.nextInt(cardSuitsList.size())));
     }
+
+    // Get Card Value
+    public Object getCardValue() {
+        return cardValue;
+    }
+
+    // Get Card Suit
+    public String getCardSuit() {
+        return cardSuit;
+    }
+
+    // Get Card Code Name (i.e. 2-H for 2 of Hearts)
+    public String getCardCodeName() {
+        return cardValue + "-" + cardSuit;
+    }
 }
