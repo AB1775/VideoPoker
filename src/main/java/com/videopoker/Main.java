@@ -7,6 +7,8 @@ public class Main {
         // Schedule a job to ensure that the GUI is created on the Event Dispatch Thread (EDT)
         SwingUtilities.invokeLater(() -> {
             // Initialize GameLogic and SwingGUI Here
+            GameLogic gameLogic = new GameLogic(new BankrollManager(1000));
+
         });
     }
 }
