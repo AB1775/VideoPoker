@@ -27,4 +27,24 @@ public class GameLogic {
         this.heldCards = new ArrayList<>();
         this.currentState = GameState.WAITING_FOR_BET;
     }
+
+    public GameState getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(GameState state) {
+        this.currentState = state;
+    }
+
+    public Card[] getCurrentHand() {
+        return currentHand;
+    }
+
+    public List<Integer> getHeldCards() {
+        return heldCards;
+    }
+
+    public BankrollManager getBankrollManager() {
+        return bankrollManager;
+    }
 }
