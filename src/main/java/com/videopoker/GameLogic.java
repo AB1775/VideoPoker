@@ -51,7 +51,13 @@ public class GameLogic {
     }
 
     public void evaluateHand(Card[] currentHand) {
-        Pattern hand = Pattern.compile(currentHand.toString());
+        String handString = "";
+
+        for (int i = 0; i < currentHand.length; ++i) {
+            handString = handString + " " + currentHand[i].getCardCodeName();
+        }
+
+        Pattern hand = Pattern.compile(handString);
         
         Matcher jacksOrBetter = hand.matcher("");
         Matcher twoPair = hand.matcher("");
