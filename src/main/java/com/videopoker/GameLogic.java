@@ -2,8 +2,6 @@ package com.videopoker;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 public class GameLogic {
     /* Game State Restrictions
@@ -48,25 +46,5 @@ public class GameLogic {
 
     public BankrollManager getBankrollManager() {
         return bankrollManager;
-    }
-
-    public void evaluateHand(Card[] currentHand) {
-        String handString = "";
-
-        for (int i = 0; i < currentHand.length; ++i) {
-            handString = handString + " " + currentHand[i].getCardCodeName();
-        }
-
-        Pattern hand = Pattern.compile(handString);
-        
-        Matcher jacksOrBetter = hand.matcher("");
-        Matcher twoPair = hand.matcher("");
-        Matcher threeOfAKind = hand.matcher("");
-        Matcher straight = hand.matcher("");
-        Matcher flush = hand.matcher("");
-        Matcher fullHouse = hand.matcher("");
-        Matcher fourOfAKind = hand.matcher("");
-        Matcher straightFlush = hand.matcher("");
-        Matcher royalFlush = hand.matcher("");
     }
 }
