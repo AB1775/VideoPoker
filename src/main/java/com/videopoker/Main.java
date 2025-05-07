@@ -9,6 +9,8 @@ public class Main {
             // Initialize GameLogic and SwingGUI Here
             GameLogic gameLogic = new GameLogic(new BankrollManager(1000));
 
+            SwingGUI swingGUI = new SwingGUI(gameLogic);
+            swingGUI.CreateAndShowGUI();
         });
     }
 }

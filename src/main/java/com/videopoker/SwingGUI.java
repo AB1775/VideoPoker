@@ -75,7 +75,51 @@ public class SwingGUI {
         return cardLabel;
     }
 
-    public void createAndShowGUI() {
+    public void CreateAndShowGUI() {
+        // JFrame for Main Window
+        JFrame mainFrame = new JFrame("Video Poker");
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setSize(1000, 500);
+        mainFrame.setLocationRelativeTo(null); // To Center the Window
+        mainFrame.setResizable(false);
+        mainFrame.setVisible(true);
+
+        // Main Panel
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(null);
+        mainPanel.setBackground(new java.awt.Color(0, 102, 34));
+        mainFrame.add(mainPanel);
+
+        // Deal Button
+        JButton dealButton = new JButton("Deal");
+
+        dealButton.setBounds(650, 40, 100, 50);
+        dealButton.setBackground(new java.awt.Color(0, 102, 34));
+        dealButton.setForeground(java.awt.Color.WHITE);
+        dealButton.setBorder(BorderFactory.createLineBorder(java.awt.Color.WHITE));
         
+        mainPanel.add(dealButton);
+        
+        dealButton.addActionListener(e -> {
+            GameLogic.GameState currentGameState = gameLogic.getCurrentState();
+
+            switch(currentGameState) {
+                case WAITING_FOR_BET:
+                    if (gameLogic.getBankrollManager().getCurrentBet() > 0) {
+                        gameLogic.setCurrentState(GameLogic.GameState.FIRST_DRAW);
+                    } else {
+                        JOptionPane.showMessageDialog(mainFrame, "Please place a bet before dealing cards.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                    break;
+                case FIRST_DRAW:
+                    gameLogic.setCurrentState(GameLogic.GameState.FINAL_DRAW);
+                    break;
+                case FINAL_DRAW:
+                    gameLogic.setCurrentState(GameLogic.GameState.WAITING_FOR_BET);
+                    break;
+                default:
+                    break;
+            } 
+        });
     }
 }
