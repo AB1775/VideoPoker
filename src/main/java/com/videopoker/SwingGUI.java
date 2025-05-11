@@ -106,6 +106,19 @@ public class SwingGUI {
             switch(currentGameState) {
                 case WAITING_FOR_BET:
                     if (gameLogic.getBankrollManager().getCurrentBet() > 0) {
+                        // Take the Player's Bet
+                        gameLogic.getBankrollManager().setCurrentBet(gameLogic.getBankrollManager().getCurrentBet());
+                        gameLogic.getBankrollManager().takeBet(gameLogic.getBankrollManager().getCurrentBet());
+
+                        // Update Current Credits and Bet Labels
+                        gameLogic.getBankrollManager().setCurrentCredits(gameLogic.getBankrollManager().getCurrentCredits());
+                        currentCreditsLabel.setText("Current Credits: " + gameLogic.getBankrollManager().getCurrentCredits());
+                        currentBetLabel.setText("Current Bet: " + gameLogic.getBankrollManager().getCurrentBet());
+
+                        // Deal and Display Initial 5-Card Hand
+                        gameLogic.dealCards();
+                        displayCards(mainPanel);
+
                         gameLogic.setCurrentState(GameLogic.GameState.FIRST_DRAW);
                     } else {
                         JOptionPane.showMessageDialog(mainFrame, "Please place a bet before dealing cards.", "Error", JOptionPane.ERROR_MESSAGE);

@@ -43,7 +43,14 @@ public class GameLogic {
     public List<Integer> getHeldCards() {
         return heldCards;
     }
-
+ 
+    public void toggleHoldCards(int cardIndex) {
+        if (heldCards.contains(cardIndex)) {
+            heldCards.remove(Integer.valueOf(cardIndex));
+        } else {
+            heldCards.add(cardIndex);
+        }
+}
     public BankrollManager getBankrollManager() {
         return bankrollManager;
     }
