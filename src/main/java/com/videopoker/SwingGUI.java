@@ -2,6 +2,7 @@ package com.videopoker;
 
 import javax.swing.*;
 import java.awt.Image;
+import java.awt.Component;
 
 public class SwingGUI {
     private static GameLogic gameLogic;
@@ -107,13 +108,13 @@ public class SwingGUI {
         dealButton.setBackground(new java.awt.Color(0, 102, 34));
         dealButton.setForeground(java.awt.Color.WHITE);
         dealButton.setBorder(BorderFactory.createLineBorder(java.awt.Color.WHITE));
-        
+
         mainPanel.add(dealButton);
-        
+
         dealButton.addActionListener(e -> {
             GameLogic.GameState currentGameState = gameLogic.getCurrentState();
 
-            switch(currentGameState) {
+            switch (currentGameState) {
                 case WAITING_FOR_BET:
                     if (gameLogic.getBankrollManager().getCurrentBet() > 0) {
                         // Take the Player's Bet
@@ -121,13 +122,20 @@ public class SwingGUI {
                         gameLogic.getBankrollManager().takeBet(gameLogic.getBankrollManager().getCurrentBet());
 
                         // Update Current Credits and Bet Labels
-                        gameLogic.getBankrollManager().setCurrentCredits(gameLogic.getBankrollManager().getCurrentCredits());
-                        currentCreditsLabel.setText("Current Credits: " + gameLogic.getBankrollManager().getCurrentCredits());
+                        gameLogic.getBankrollManager()
+                                .setCurrentCredits(gameLogic.getBankrollManager().getCurrentCredits());
+                        currentCreditsLabel
+                                .setText("Current Credits: " + gameLogic.getBankrollManager().getCurrentCredits());
                         currentBetLabel.setText("Current Bet: " + gameLogic.getBankrollManager().getCurrentBet());
+
+                        // Deal and Display Initial 5-Card Hand
+                        gameLogic.dealCards();
+                        displayCards(mainPanel);
 
                         gameLogic.setCurrentState(GameLogic.GameState.FIRST_DRAW);
                     } else {
-                        JOptionPane.showMessageDialog(mainFrame, "Please place a bet before dealing cards.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(mainFrame, "Please place a bet before dealing cards.", "Error",
+                                JOptionPane.ERROR_MESSAGE);
                     }
                     break;
                 case FIRST_DRAW:
@@ -138,8 +146,29 @@ public class SwingGUI {
                     break;
                 default:
                     break;
-            } 
+            }
         });
-        
+    }
+
+    private void displayCards(JPanel mainPanel) {
+        for (Component component : mainPanel.getComponents()) {
+            if (component instanceof JLabel && ((JLabel) component).getIcon() != null) {
+                mainPanel.remove(component);
+            }
+        }
+
+        Card[] currentHand = gameLogic.getCurrentHand();
+        int cardPosition = 50;
+
+        for (Card card : currentHand) {
+            if (card != null) {
+                JLabel cardLabel = createCardLabel(card.getCardCodeName());
+                cardLabel.setBounds(cardPosition, 150, 100, 150);
+                mainPanel.add(cardLabel);
+                cardPosition += 150;
+            }
+        }
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }
 }
