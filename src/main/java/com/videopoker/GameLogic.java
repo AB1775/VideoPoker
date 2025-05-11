@@ -51,6 +51,16 @@ public class GameLogic {
             heldCards.add(cardIndex);
         }
 }
+
+    public void dealCards() {
+        for (int i = 0; i < currentHand.length; ++i) {
+            if (!heldCards.contains(i)) {
+                currentHand[i] = new Card();
+            }
+        }
+        heldCards.clear();
+    }
+
     public BankrollManager getBankrollManager() {
         return bankrollManager;
     }
