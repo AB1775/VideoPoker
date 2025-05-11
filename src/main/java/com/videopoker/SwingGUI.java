@@ -90,6 +90,16 @@ public class SwingGUI {
         mainPanel.setBackground(new java.awt.Color(0, 102, 34));
         mainFrame.add(mainPanel);
 
+        // Labels
+        JLabel scoreTableLabel = createScoreTableLabel();
+        mainPanel.add(scoreTableLabel);
+
+        JLabel currentCreditsLabel = createCurrentCreditsLabel();
+        mainPanel.add(currentCreditsLabel);
+
+        JLabel currentBetLabel = createCurrentBetLabel();
+        mainPanel.add(currentBetLabel);
+
         // Deal Button
         JButton dealButton = new JButton("Deal");
 
@@ -115,10 +125,6 @@ public class SwingGUI {
                         currentCreditsLabel.setText("Current Credits: " + gameLogic.getBankrollManager().getCurrentCredits());
                         currentBetLabel.setText("Current Bet: " + gameLogic.getBankrollManager().getCurrentBet());
 
-                        // Deal and Display Initial 5-Card Hand
-                        gameLogic.dealCards();
-                        displayCards(mainPanel);
-
                         gameLogic.setCurrentState(GameLogic.GameState.FIRST_DRAW);
                     } else {
                         JOptionPane.showMessageDialog(mainFrame, "Please place a bet before dealing cards.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -134,5 +140,6 @@ public class SwingGUI {
                     break;
             } 
         });
+        
     }
 }
