@@ -303,6 +303,13 @@ public class SwingGUI {
                     }
                     break;
                 case FIRST_DRAW:
+                    // Deal and Display Non-Held Cards
+                    gameLogic.dealCards();
+                    displayCards(mainPanel);
+                    
+                    // Prevent Player from Editing Held Cards
+                    disableHoldButtons(holdButton1, holdButton2, holdButton3, holdButton4, holdButton5);
+                    
                     gameLogic.setCurrentState(GameLogic.GameState.FINAL_DRAW);
                     break;
                 case FINAL_DRAW:
