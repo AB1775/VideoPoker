@@ -101,6 +101,41 @@ public class SwingGUI {
         JLabel currentBetLabel = createCurrentBetLabel();
         mainPanel.add(currentBetLabel);
 
+        // Bet Managment Buttons
+        JButton increaseBetButton = new JButton("Bet +1");
+        increaseBetButton.setBackground(new java.awt.Color(0, 102, 34));
+        increaseBetButton.setForeground(java.awt.Color.WHITE);
+        increaseBetButton.setBorder(BorderFactory.createLineBorder(java.awt.Color.WHITE));
+
+        increaseBetButton.addActionListener(e -> {
+            gameLogic.getBankrollManager().increaseCurrentBet();
+            currentBetLabel.setText("Current Bet: " + gameLogic.getBankrollManager().getCurrentBet());
+
+            if (gameLogic.getBankrollManager().getCurrentBet() > gameLogic.getBankrollManager().getCurrentCredits()) {
+                JOptionPane.showMessageDialog(mainFrame, "Bet cannot exceed current credits", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                gameLogic.getBankrollManager().setCurrentBet(gameLogic.getBankrollManager().getCurrentCredits());
+                currentBetLabel.setText("Current Bet: " + gameLogic.getBankrollManager().getCurrentBet());
+            }
+        });
+
+        JButton decreaseBetButton = new JButton("Bet -1");
+        decreaseBetButton.setBackground(new java.awt.Color(0, 102, 34));
+        decreaseBetButton.setForeground(java.awt.Color.WHITE);
+        decreaseBetButton.setBorder(BorderFactory.createLineBorder(java.awt.Color.WHITE));
+
+        decreaseBetButton.addActionListener(e -> {
+            gameLogic.getBankrollManager().decreaseCurrentBet();
+            currentBetLabel.setText("Current Bet: " + gameLogic.getBankrollManager().getCurrentBet());
+
+            if (gameLogic.getBankrollManager().getCurrentBet() < 0) {
+                JOptionPane.showMessageDialog(mainFrame, "Bet cannot be less than 0", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                gameLogic.getBankrollManager().setCurrentBet(1); // Reset to minimum bet
+                currentBetLabel.setText("Current Bet: " + gameLogic.getBankrollManager().getCurrentBet());
+            }
+        });
+
         // Deal Button
         JButton dealButton = new JButton("Deal");
 
