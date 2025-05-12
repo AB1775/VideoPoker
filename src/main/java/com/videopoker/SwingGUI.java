@@ -200,6 +200,9 @@ public class SwingGUI {
         setHoldButtonStyles(holdButton1, holdButton2, holdButton3, holdButton4, holdButton5);
         setHoldButtonStates(holdButton1, holdButton2, holdButton3, holdButton4, holdButton5);
 
+        // Disable Hold Buttons by Default Until FIRST_DRAW State
+        disableHoldButtons(holdButton1, holdButton2, holdButton3, holdButton4, holdButton5);
+
         // Hold Button Event Listeners
         holdButton1.addActionListener(e -> {
             boolean inactiveFlag = (boolean) holdButton1.getClientProperty("inactiveFlag");
@@ -262,7 +265,7 @@ public class SwingGUI {
         });
 
         // Deal Button
-        JButton dealButton = new JButton("Deal");
+        JButton dealButton = new JButton("Place Bet");
 
         dealButton.setBounds(650, 40, 100, 50);
         dealButton.setBackground(new java.awt.Color(0, 102, 34));
@@ -277,6 +280,8 @@ public class SwingGUI {
             switch (currentGameState) {
                 case WAITING_FOR_BET:
                     if (gameLogic.getBankrollManager().getCurrentBet() > 0) {
+                        dealButton.setText("Deal");
+
                         // Take the Player's Bet
                         gameLogic.getBankrollManager().setCurrentBet(gameLogic.getBankrollManager().getCurrentBet());
                         gameLogic.getBankrollManager().takeBet(gameLogic.getBankrollManager().getCurrentBet());
@@ -291,6 +296,9 @@ public class SwingGUI {
                         // Deal and Display Initial 5-Card Hand
                         gameLogic.dealCards();
                         displayCards(mainPanel);
+
+                        // Allow Players to Edit Hold Cards for This State
+                        enableHoldButtons(holdButton1, holdButton2, holdButton3, holdButton4, holdButton5);
 
                         // Prevent Player from Editing Current Bet
                         increaseBetButton.setEnabled(false);
@@ -310,9 +318,24 @@ public class SwingGUI {
                     // Prevent Player from Editing Held Cards
                     disableHoldButtons(holdButton1, holdButton2, holdButton3, holdButton4, holdButton5);
                     
+                    dealButton.setText("Continue");
+
                     gameLogic.setCurrentState(GameLogic.GameState.FINAL_DRAW);
                     break;
                 case FINAL_DRAW:
+                    // Is this a Winning Hand?
+
+                    // Payout
+
+                    // Enable Bet Buttons
+                    increaseBetButton.setEnabled(true);
+                    decreaseBetButton.setEnabled(true);
+
+                    dealButton.setText("Place Bet");
+
+                    // Reset Hold Buttons
+                    resetHoldButtons(holdButton1, holdButton2, holdButton3, holdButton4, holdButton5);
+                    
                     gameLogic.setCurrentState(GameLogic.GameState.WAITING_FOR_BET);
                     break;
                 default:
