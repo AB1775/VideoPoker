@@ -1,5 +1,34 @@
 package com.videopoker;
 
+import java.util.Map;
+import java.util.HashMap;
+
 public class HandEvaluation {
 
+    // Tracks the count of each card value (e.g., "2", "3", "A", "K") 
+    static Map<String, Integer> valueCounterMap = new HashMap<>();
+    static {
+        valueCounterMap.put("2", 0);
+        valueCounterMap.put("3", 0);
+        valueCounterMap.put("4", 0);
+        valueCounterMap.put("5", 0);
+        valueCounterMap.put("6", 0);
+        valueCounterMap.put("7", 0);
+        valueCounterMap.put("8", 0);
+        valueCounterMap.put("9", 0);
+        valueCounterMap.put("10", 0);
+        valueCounterMap.put("A", 0);
+        valueCounterMap.put("J", 0);
+        valueCounterMap.put("Q", 0);
+        valueCounterMap.put("K", 0);
+    }
+
+    // Tracks the count of each card suit (e.g., 'H' for Hearts, 'D' for Diamonds, 'C' for Clubs, 'S' for Spades)
+    static Map<Character, Integer> suitCounterMap = new HashMap<>();
+    static {
+        suitCounterMap.put('H', 0);
+        suitCounterMap.put('D', 0);
+        suitCounterMap.put('C', 0);
+        suitCounterMap.put('S', 0);
+    }
 }
