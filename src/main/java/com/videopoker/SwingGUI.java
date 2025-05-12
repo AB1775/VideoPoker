@@ -157,6 +157,12 @@ public class SwingGUI {
         holdButton4.setBounds(500, 350, 100, 50);
         holdButton5.setBounds(650, 350, 100, 50);
 
+        mainPanel.add(holdButton1);
+        mainPanel.add(holdButton2);
+        mainPanel.add(holdButton3);
+        mainPanel.add(holdButton4);
+        mainPanel.add(holdButton5);
+
         // Deal Button
         JButton dealButton = new JButton("Deal");
 
