@@ -136,6 +136,13 @@ public class SwingGUI {
             }
         });
 
+        // Bet Button Layout Positions
+        increaseBetButton.setBounds(200, 40, 100, 50);
+        mainPanel.add(increaseBetButton);
+
+        decreaseBetButton.setBounds(400, 40, 100, 50);
+        mainPanel.add(decreaseBetButton);
+
         // Deal Button
         JButton dealButton = new JButton("Deal");
 
