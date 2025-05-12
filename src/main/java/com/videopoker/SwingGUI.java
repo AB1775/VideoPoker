@@ -57,6 +57,40 @@ public class SwingGUI {
         return scoreTableLabel;
     }
 
+    // Misc. Hold Button Functions
+    public void setHoldButtonStyles(JButton... holdButtons) {
+        for (JButton holdButton : holdButtons) {
+            holdButton.setBackground(new java.awt.Color(0, 102, 34));
+            holdButton.setForeground(java.awt.Color.WHITE);
+            holdButton.setBorder(BorderFactory.createLineBorder(java.awt.Color.WHITE));
+        }
+    }
+
+    public void setHoldButtonStates(JButton... holdButtons) {
+        for (JButton holdButton : holdButtons) {
+            holdButton.putClientProperty("inactiveFlag", true);
+        }
+    }
+
+    public void enableHoldButtons(JButton... holdButtons) {
+        for (JButton holdButton : holdButtons) {
+            holdButton.setEnabled(true);
+        }
+    }
+
+    public void disableHoldButtons(JButton... holdButtons) {
+        for (JButton holdButton : holdButtons) {
+            holdButton.setEnabled(false);
+        }
+    }
+
+    public void resetHoldButtons(JButton... holdButtons) {
+        for (JButton holdButton : holdButtons) {
+            holdButton.putClientProperty("inactiveFlag", true);
+            holdButton.setText("Hold");
+        }
+    }
+
     // Fetch and Display Card Image Icons using JLabels and ImageIcons
     private static JLabel createCardLabel(String cardCodeName) {
         /******************************************************************************************
@@ -162,6 +196,9 @@ public class SwingGUI {
         mainPanel.add(holdButton3);
         mainPanel.add(holdButton4);
         mainPanel.add(holdButton5);
+
+        setHoldButtonStyles(holdButton1, holdButton2, holdButton3, holdButton4, holdButton5);
+        setHoldButtonStates(holdButton1, holdButton2, holdButton3, holdButton4, holdButton5);
 
         // Deal Button
         JButton dealButton = new JButton("Deal");
