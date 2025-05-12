@@ -44,4 +44,27 @@ public class HandEvaluation {
             suitCounterMap.merge(card.getCardSuit().charAt(0), 1, Integer::sum);
         }
     }
+
+    // Hand Checking Functions
+    // Returns one of the Strings (Key) from payoutMap and Passes it to calculatePayout(String)
+    // Will be Called in Descending Order from Strongest Hand to Weakest Hand
+    // Return Empty String for Non-Matching Hands
+    public static String checkRoyalFlush() { return ""; }
+   
+    public static String checkStraightFlush() { return ""; }
+    
+    public static String checkFlush() { return ""; }
+    
+    public static String checkFourOfAKind() { return ""; }
+    
+    public static String checkFullHouse() { return ""; }
+    
+    public static String checkStraight() { return ""; }
+    
+    public static String checkThreeOfAKind() { return ""; }
+    
+    public static String checkTwoPair() { return ""; }
+
+    public static String checkJacksOrBetter() { return ""; }
+
 }
