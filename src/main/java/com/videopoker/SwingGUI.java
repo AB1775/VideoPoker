@@ -292,13 +292,17 @@ public class SwingGUI {
                         gameLogic.dealCards();
                         displayCards(mainPanel);
 
+                        // Prevent Player from Editing Current Bet
+                        increaseBetButton.setEnabled(false);
+                        decreaseBetButton.setEnabled(false);
+
                         gameLogic.setCurrentState(GameLogic.GameState.FIRST_DRAW);
                     } else {
                         JOptionPane.showMessageDialog(mainFrame, "Please place a bet before dealing cards.", "Error",
                                 JOptionPane.ERROR_MESSAGE);
                     }
                     break;
-                case FIRST_DRAW:                 
+                case FIRST_DRAW:
                     gameLogic.setCurrentState(GameLogic.GameState.FINAL_DRAW);
                     break;
                 case FINAL_DRAW:
