@@ -200,6 +200,67 @@ public class SwingGUI {
         setHoldButtonStyles(holdButton1, holdButton2, holdButton3, holdButton4, holdButton5);
         setHoldButtonStates(holdButton1, holdButton2, holdButton3, holdButton4, holdButton5);
 
+        // Hold Button Event Listeners
+        holdButton1.addActionListener(e -> {
+            boolean inactiveFlag = (boolean) holdButton1.getClientProperty("inactiveFlag");
+            if (inactiveFlag) {
+                holdButton1.putClientProperty("inactiveFlag", !inactiveFlag);
+                holdButton1.setText("Cancel");
+            } else {
+                holdButton1.putClientProperty("inactiveFlag", !inactiveFlag);
+                holdButton1.setText("Hold");
+            }
+            gameLogic.toggleHoldCards(0);
+        });
+
+        holdButton2.addActionListener(e -> {
+            boolean inactiveFlag = (boolean) holdButton2.getClientProperty("inactiveFlag");
+            if (inactiveFlag) {
+                holdButton2.putClientProperty("inactiveFlag", !inactiveFlag);
+                holdButton2.setText("Cancel");
+            } else {
+                holdButton2.putClientProperty("inactiveFlag", !inactiveFlag);
+                holdButton2.setText("Hold");
+            }
+            gameLogic.toggleHoldCards(1);
+        });
+
+        holdButton3.addActionListener(e -> {
+            boolean inactiveFlag = (boolean) holdButton3.getClientProperty("inactiveFlag");
+            if (inactiveFlag) {
+                holdButton3.putClientProperty("inactiveFlag", !inactiveFlag);
+                holdButton3.setText("Cancel");
+            } else {
+                holdButton3.putClientProperty("inactiveFlag", !inactiveFlag);
+                holdButton3.setText("Hold");
+            }
+            gameLogic.toggleHoldCards(2);
+        });
+
+        holdButton4.addActionListener(e -> {
+            boolean inactiveFlag = (boolean) holdButton4.getClientProperty("inactiveFlag");
+            if (inactiveFlag) {
+                holdButton4.putClientProperty("inactiveFlag", !inactiveFlag);
+                holdButton4.setText("Cancel");
+            } else {
+                holdButton4.putClientProperty("inactiveFlag", !inactiveFlag);
+                holdButton4.setText("Hold");
+            }
+            gameLogic.toggleHoldCards(3);
+        });
+
+        holdButton5.addActionListener(e -> {
+            boolean inactiveFlag = (boolean) holdButton5.getClientProperty("inactiveFlag");
+            if (inactiveFlag == true) {
+                holdButton5.putClientProperty("inactiveFlag", !inactiveFlag);
+                holdButton5.setText("Cancel");
+            } else {
+                holdButton5.putClientProperty("inactiveFlag", !inactiveFlag);
+                holdButton5.setText("Hold");
+            }
+            gameLogic.toggleHoldCards(4);
+        });
+
         // Deal Button
         JButton dealButton = new JButton("Deal");
 
@@ -237,7 +298,7 @@ public class SwingGUI {
                                 JOptionPane.ERROR_MESSAGE);
                     }
                     break;
-                case FIRST_DRAW:
+                case FIRST_DRAW:                 
                     gameLogic.setCurrentState(GameLogic.GameState.FINAL_DRAW);
                     break;
                 case FINAL_DRAW:
