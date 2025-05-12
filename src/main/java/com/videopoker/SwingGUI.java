@@ -76,6 +76,7 @@ public class SwingGUI {
         return cardLabel;
     }
 
+
     public void CreateAndShowGUI() {
         // JFrame for Main Window
         JFrame mainFrame = new JFrame("Video Poker");
@@ -142,6 +143,19 @@ public class SwingGUI {
 
         decreaseBetButton.setBounds(400, 40, 100, 50);
         mainPanel.add(decreaseBetButton);
+
+        JButton holdButton1 = new JButton("Hold");
+        JButton holdButton2 = new JButton("Hold");
+        JButton holdButton3 = new JButton("Hold");
+        JButton holdButton4 = new JButton("Hold");
+        JButton holdButton5 = new JButton("Hold");
+
+        // Hold Button Positions
+        holdButton1.setBounds(50, 350, 100, 50);
+        holdButton2.setBounds(200, 350, 100, 50);
+        holdButton3.setBounds(350, 350, 100, 50);
+        holdButton4.setBounds(500, 350, 100, 50);
+        holdButton5.setBounds(650, 350, 100, 50);
 
         // Deal Button
         JButton dealButton = new JButton("Deal");
