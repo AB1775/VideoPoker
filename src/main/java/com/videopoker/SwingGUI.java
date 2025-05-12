@@ -64,7 +64,7 @@ public class SwingGUI {
          * Future Changes
          * Probably use classpath-based loading instead
          ******************************************************************************************/
-        String imagePath = "videopoker/src/main/resources/cards/" + cardCodeName + ".png";
+        String imagePath = "src/main/resources/cards/" + cardCodeName + ".png";
         ImageIcon cardIcon = new ImageIcon(imagePath);
 
         Image scaledImage = cardIcon.getImage().getScaledInstance(100, 150, java.awt.Image.SCALE_SMOOTH);
