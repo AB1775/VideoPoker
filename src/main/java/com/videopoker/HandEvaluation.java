@@ -31,4 +31,17 @@ public class HandEvaluation {
         suitCounterMap.put('C', 0);
         suitCounterMap.put('S', 0);
     }
+
+    public static void valueCounter(Card[] currentHand) {
+        for (Card card : currentHand) {
+            String cardValueString = card.getCardValue().toString();
+            valueCounterMap.merge(cardValueString, 1, Integer::sum);
+        }
+    }
+
+    public static void suitCounter(Card[] currentHand) {
+        for (Card card : currentHand) {
+            suitCounterMap.merge(card.getCardSuit().charAt(0), 1, Integer::sum);
+        }
+    }
 }
