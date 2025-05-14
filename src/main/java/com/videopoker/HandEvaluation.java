@@ -31,6 +31,11 @@ public class HandEvaluation {
         suitCounterMap.put('C', 0);
         suitCounterMap.put('S', 0);
     }
+    
+    static void resetMaps() {
+        valueCounterMap.clear();
+        suitCounterMap.clear();
+     }
 
     public static void valueCounter(Card[] currentHand) {
         for (Card card : currentHand) {
@@ -64,7 +69,7 @@ public class HandEvaluation {
                 return "Four of a Kind";
             }
         }
-        
+
         return ""; 
     }
     
