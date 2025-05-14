@@ -49,22 +49,69 @@ public class HandEvaluation {
     // Returns one of the Strings (Key) from payoutMap and Passes it to calculatePayout(String)
     // Will be Called in Descending Order from Strongest Hand to Weakest Hand
     // Return Empty String for Non-Matching Hands
+
     public static String checkRoyalFlush() { return ""; }
    
     public static String checkStraightFlush() { return ""; }
     
     public static String checkFlush() { return ""; }
     
-    public static String checkFourOfAKind() { return ""; }
+    public static String checkFourOfAKind() { 
+        for (String cardValue : valueCounterMap.keySet()) {
+            int value = valueCounterMap.get(cardValue);
+
+            if (value == 4) {
+                return "Four of a Kind";
+            }
+        }
+        
+        return ""; 
+    }
     
     public static String checkFullHouse() { return ""; }
     
     public static String checkStraight() { return ""; }
     
-    public static String checkThreeOfAKind() { return ""; }
-    
-    public static String checkTwoPair() { return ""; }
+    public static String checkThreeOfAKind() { 
+        for (String cardValue : valueCounterMap.keySet()) {
+            int value = valueCounterMap.get(cardValue);
 
-    public static String checkJacksOrBetter() { return ""; }
+            if (value == 3) {
+                return "Three of a Kind";
+            }
+        }
+        
+        return ""; 
+    }
+    
+    public static String checkTwoPair() { 
+        int pairCount = 0;
+
+        for (String cardValue : valueCounterMap.keySet()) {
+            if (valueCounterMap.get(cardValue) == 2) {
+                ++pairCount;
+            }
+
+            if (pairCount == 2) {
+                return "Two Pair";
+            }
+        }
+
+        return ""; 
+    }
+
+    public static String checkJacksOrBetter() { 
+        int tenCount = valueCounterMap.getOrDefault(10, 0);
+        int jacksCount = valueCounterMap.getOrDefault("J", 0);
+        int queenCount = valueCounterMap.getOrDefault("Q", 0);
+        int kingCount = valueCounterMap.getOrDefault("K", 0);
+        int aceCount = valueCounterMap.getOrDefault("A", 0);
+
+        if (tenCount == 2 || aceCount == 2 || kingCount == 2 || queenCount == 2 || jacksCount == 2) {
+            return "Jacks or Better";
+        }
+
+        return ""; 
+    }
 
 }
