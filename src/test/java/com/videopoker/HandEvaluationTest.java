@@ -24,4 +24,20 @@ public class HandEvaluationTest {
         String result = HandEvaluation.checkJacksOrBetter();
         assertEquals("Jacks or Better", result);
     }
+    
+    @Test
+    public void testCheckTwoPair() {
+        Card[] hand = {
+            new Card(2, "D"),
+            new Card(2, "H"),
+            new Card(7, "S"),
+            new Card(7, "D"),
+            new Card('J', "C")
+        };
+
+        HandEvaluation.valueCounter(hand);
+        String result = HandEvaluation.checkTwoPair();
+        assertEquals("Two Pair", result);
+    }
+
 }
