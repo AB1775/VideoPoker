@@ -24,7 +24,7 @@ public class HandEvaluationTest {
         String result = HandEvaluation.checkJacksOrBetter();
         assertEquals("Jacks or Better", result);
     }
-    
+
     @Test
     public void testCheckTwoPair() {
         Card[] hand = {
@@ -38,6 +38,21 @@ public class HandEvaluationTest {
         HandEvaluation.valueCounter(hand);
         String result = HandEvaluation.checkTwoPair();
         assertEquals("Two Pair", result);
+    }
+
+    @Test
+    public void testCheckThreeOfAKind() {
+        Card[] hand = {
+            new Card('A', "H"),
+            new Card(5, "D"),
+            new Card(5, "S"),
+            new Card (5, "C"),
+            new Card(2, "D")
+        };
+
+        HandEvaluation.valueCounter(hand);
+        String result = HandEvaluation.checkThreeOfAKind();
+        assertEquals("Three of a Kind", result);
     }
 
 }
