@@ -70,4 +70,18 @@ public class HandEvaluationTest {
         assertEquals("Four of a Kind", result);
     }
 
+    @Test
+    public void testCheckFlush() {
+        Card[] hand = {
+            new Card(3, "H"),
+            new Card(2, "H"),
+            new Card('A', "H"),
+            new Card (5, "H"),
+            new Card(7, "H")
+        };
+
+        HandEvaluation.suitCounter(hand);
+        String result = HandEvaluation.checkFlush();
+        assertEquals("Flush", result);
+    }
 }
