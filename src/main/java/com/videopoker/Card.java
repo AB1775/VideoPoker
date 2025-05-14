@@ -12,7 +12,7 @@ public class Card {
                                            6, 7, 8, 9, 10,
                                           'J', 'Q', 'K');
     
-    List<Character> cardSuitsList = List.of('H', 'D', 'C', 'S');
+    List<String> cardSuitsList = List.of("H", "D", "C", "S");
 
     // Card Constructor
     public Card(Object cardValue, String cardSuit) {
@@ -24,7 +24,7 @@ public class Card {
     public Card() {
         Random random = new Random();
         this.cardValue = cardValuesList.get(random.nextInt(cardValuesList.size()));
-        this.cardSuit = String.valueOf(cardSuitsList.get(random.nextInt(cardSuitsList.size())));
+        this.cardSuit = cardSuitsList.get(random.nextInt(cardSuitsList.size()));
     }
 
     // Get Card Value
