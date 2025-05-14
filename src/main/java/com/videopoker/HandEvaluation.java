@@ -31,7 +31,7 @@ public class HandEvaluation {
         suitCounterMap.put('C', 0);
         suitCounterMap.put('S', 0);
     }
-    
+
     static void resetMaps() {
         valueCounterMap.clear();
         suitCounterMap.clear();
@@ -59,7 +59,17 @@ public class HandEvaluation {
    
     public static String checkStraightFlush() { return ""; }
     
-    public static String checkFlush() { return ""; }
+    public static String checkFlush() { 
+        for (Character cardSuit : suitCounterMap.keySet()) {
+            int suit = suitCounterMap.get(cardSuit);
+
+            if (suit == 5) {
+                return "Flush";
+            }
+        }
+            
+        return ""; 
+    }
     
     public static String checkFourOfAKind() { 
         for (String cardValue : valueCounterMap.keySet()) {
