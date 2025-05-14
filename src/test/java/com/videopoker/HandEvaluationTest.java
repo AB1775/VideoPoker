@@ -55,4 +55,19 @@ public class HandEvaluationTest {
         assertEquals("Three of a Kind", result);
     }
 
+    @Test
+    public void testCheckFourOfAKind() {
+        Card[] hand = {
+            new Card('A', "H"),
+            new Card('A', "D"),
+            new Card('A', "S"),
+            new Card ('A', "C"),
+            new Card(2, "D")
+        };
+
+        HandEvaluation.valueCounter(hand);
+        String result = HandEvaluation.checkFourOfAKind();
+        assertEquals("Four of a Kind", result);
+    }
+
 }
