@@ -116,7 +116,7 @@ public class HandEvaluation {
     }
 
     public static String checkJacksOrBetter() { 
-        int tenCount = valueCounterMap.getOrDefault(10, 0);
+        int tenCount = valueCounterMap.getOrDefault("10", 0);
         int jacksCount = valueCounterMap.getOrDefault("J", 0);
         int queenCount = valueCounterMap.getOrDefault("Q", 0);
         int kingCount = valueCounterMap.getOrDefault("K", 0);
