@@ -325,12 +325,12 @@ public class SwingGUI {
                     gameLogic.setCurrentState(GameLogic.GameState.FINAL_DRAW);
                     break;
                 case FINAL_DRAW:
-                    // Is this a Winning Hand?
                     HandEvaluation.valueCounter(gameLogic.getCurrentHand());
                     HandEvaluation.suitCounter(gameLogic.getCurrentHand());
-                    
-                    // Payout
 
+                    String outcome = HandEvaluation.handChecker(gameLogic.getCurrentHand());
+                    int payout = gameLogic.getBankrollManager().calculatePayout(outcome);
+                    
                     // Enable Bet Buttons
                     increaseBetButton.setEnabled(true);
                     decreaseBetButton.setEnabled(true);
