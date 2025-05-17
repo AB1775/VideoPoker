@@ -2,6 +2,9 @@ package com.videopoker;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
 
 public class HandEvaluation {
 
@@ -129,4 +132,41 @@ public class HandEvaluation {
         return ""; 
     }
 
+    public static String handChecker(Card[] currentHand) {
+        List<Supplier<String>> handCheckers = new ArrayList<>();
+
+        // Add Royal Flush
+        // Add Straight Flush
+        handCheckers.add(HandEvaluation::checkFourOfAKind);
+        // Add Flull House
+        handCheckers.add(HandEvaluation::checkFlush);
+        // Add Straight
+        handCheckers.add(HandEvaluation::checkThreeOfAKind);
+        handCheckers.add(HandEvaluation::checkTwoPair);
+        handCheckers.add(HandEvaluation::checkJacksOrBetter); 
+
+        for (Supplier<String> checker : handCheckers) {
+            String result = checker.get();
+
+            if (!result.isEmpty()) {
+                return result;
+            }
+        }
+       
+        return "";
+    }
+
+/*
+    public static String handChecker(Card[] currentHand) {
+        // Add Royal Flush
+        // Add Straight Flush
+        // Add Straight
+        if (!checkFlush().isEmpty()) { return "Flush"; }
+        else if (!checkFourOfAKind().isEmpty()) { return "Four of a Kind"; }
+        else if (!checkThreeOfAKind().isEmpty()) { return "Three of a Kind"; }
+        else if (!checkTwoPair().isEmpty()) { return "Two Pair"; }
+        else if (!checkJacksOrBetter().isEmpty()) { return "Jacks or Better"; }
+        else { return ""; }
+    }
+*/
 }
