@@ -58,6 +58,11 @@ public class BankrollManager {
         return 0; // No payout for Loss
     }
 
+    // Update the Bankroll Following Round Completion
+    public void updateCurrentCredits(int amount) {
+        this.currentCredits += amount;
+    }
+
     // Increase Current Bet by One
     public void increaseCurrentBet() {
         // Logic to ++currentBet when Increase Bet Button is Clicked
