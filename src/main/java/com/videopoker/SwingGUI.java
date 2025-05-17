@@ -282,6 +282,8 @@ public class SwingGUI {
                     if (gameLogic.getBankrollManager().getCurrentBet() > 0) {
                         dealButton.setText("Deal");
 
+                        HandEvaluation.resetMaps();
+
                         // Take the Player's Bet
                         gameLogic.getBankrollManager().setCurrentBet(gameLogic.getBankrollManager().getCurrentBet());
                         gameLogic.getBankrollManager().takeBet(gameLogic.getBankrollManager().getCurrentBet());
@@ -324,7 +326,9 @@ public class SwingGUI {
                     break;
                 case FINAL_DRAW:
                     // Is this a Winning Hand?
-
+                    HandEvaluation.valueCounter(gameLogic.getCurrentHand());
+                    HandEvaluation.suitCounter(gameLogic.getCurrentHand());
+                    
                     // Payout
 
                     // Enable Bet Buttons
