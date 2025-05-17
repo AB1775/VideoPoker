@@ -155,18 +155,4 @@ public class HandEvaluation {
        
         return "";
     }
-
-/*
-    public static String handChecker(Card[] currentHand) {
-        // Add Royal Flush
-        // Add Straight Flush
-        // Add Straight
-        if (!checkFlush().isEmpty()) { return "Flush"; }
-        else if (!checkFourOfAKind().isEmpty()) { return "Four of a Kind"; }
-        else if (!checkThreeOfAKind().isEmpty()) { return "Three of a Kind"; }
-        else if (!checkTwoPair().isEmpty()) { return "Two Pair"; }
-        else if (!checkJacksOrBetter().isEmpty()) { return "Jacks or Better"; }
-        else { return ""; }
-    }
-*/
 }
