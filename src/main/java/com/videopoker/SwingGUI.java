@@ -330,7 +330,12 @@ public class SwingGUI {
 
                     String outcome = HandEvaluation.handChecker(gameLogic.getCurrentHand());
                     int payout = gameLogic.getBankrollManager().calculatePayout(outcome);
-                    
+
+                    if (payout != 0) {
+                        gameLogic.getBankrollManager().updateCurrentCredits(gameLogic.getBankrollManager().getCurrentBet() + payout);
+                    } else {
+                    }
+
                     // Enable Bet Buttons
                     increaseBetButton.setEnabled(true);
                     decreaseBetButton.setEnabled(true);
