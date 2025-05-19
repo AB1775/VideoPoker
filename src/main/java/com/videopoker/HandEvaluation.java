@@ -88,7 +88,24 @@ public class HandEvaluation {
         return ""; 
     }
     
-    public static String checkFullHouse() { return ""; }
+    public static String checkFullHouse() { 
+        boolean hasThreeOfAKind = false;
+        boolean hasPair = false;
+
+        for (int count : valueCounterMap.values()) {
+            // While a hand of 5 equal cards is not possible in standard poker, this game does not use a 52 card deck
+            if (count >= 3) {
+                hasThreeOfAKind = true;
+            } else if (count == 2) {
+                hasPair = true;
+            }
+        }
+
+        if (hasThreeOfAKind && hasPair) {
+            return "Full House";
+        }
+        return ""; 
+    }
     
     public static String checkStraight(Card[] currentHand) {
         List<Integer> cardValues = new ArrayList<>();
@@ -178,7 +195,7 @@ public class HandEvaluation {
         // Add Royal Flush
         // Add Straight Flush
         handCheckers.add(HandEvaluation::checkFourOfAKind);
-        // Add Full House
+        handCheckers.add(HandEvaluation::checkFullHouse);
         handCheckers.add(HandEvaluation::checkFlush);
         handCheckers.add(() -> checkStraight(currentHand));
         handCheckers.add(HandEvaluation::checkThreeOfAKind);
