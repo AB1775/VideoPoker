@@ -127,6 +127,11 @@ public class SwingGUI {
         mainFrame.add(mainPanel);
 
         // Labels
+        JLabel winMessageLabel = new JLabel();
+        winMessageLabel.setBounds(200, 100, 400, 50);
+        winMessageLabel.setForeground(java.awt.Color.WHITE);
+        winMessageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        
         JLabel scoreTableLabel = createScoreTableLabel();
         mainPanel.add(scoreTableLabel);
 
@@ -277,6 +282,11 @@ public class SwingGUI {
         dealButton.addActionListener(e -> {
             GameLogic.GameState currentGameState = gameLogic.getCurrentState();
 
+            // Remove the Win Message Label
+            mainPanel.remove(winMessageLabel);
+            mainPanel.revalidate();
+            mainPanel.repaint();
+
             switch (currentGameState) {
                 case WAITING_FOR_BET:
                     if (gameLogic.getBankrollManager().getCurrentBet() > 0) {
@@ -333,8 +343,15 @@ public class SwingGUI {
 
                     if (payout != 0) {
                         gameLogic.getBankrollManager().updateCurrentCredits(gameLogic.getBankrollManager().getCurrentBet() + payout);
+                        winMessageLabel.setText(outcome + ", Payout: " + payout);
                     } else {
+                        winMessageLabel.setText("Try Again!");
                     }
+
+                    // Add the label to the main panel
+                    mainPanel.add(winMessageLabel);
+                    mainPanel.revalidate();
+                    mainPanel.repaint();
 
                     // Enable Bet Buttons
                     increaseBetButton.setEnabled(true);
