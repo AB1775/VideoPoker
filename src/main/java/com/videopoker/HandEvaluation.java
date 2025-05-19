@@ -2,7 +2,9 @@ package com.videopoker;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -88,7 +90,45 @@ public class HandEvaluation {
     
     public static String checkFullHouse() { return ""; }
     
-    public static String checkStraight() { return ""; }
+    public static String checkStraight(Card[] currentHand) {
+        List<Integer> cardValues = new ArrayList<>();
+        
+        for (Card card : currentHand) {
+            Object value = card.getCardValue();
+
+            // Convert Face Cards to Numeric Value
+            if (value.equals('A')) {
+                cardValues.add(14);         // Ace High Straight
+            } else if (value.equals('K')) {
+                cardValues.add(13);
+            } else if (value.equals('Q')) {
+                cardValues.add(12);
+            } else if (value.equals('J')) {
+                cardValues.add(11);
+            } else {
+                cardValues.add((Integer) value);
+            }
+        }
+        List<Integer> uniqueValues = new ArrayList<>(new HashSet<>(cardValues));
+        Collections.sort(uniqueValues);
+        
+        for (int i = 0; i <= uniqueValues.size() - 5; ++i) {
+            if (isContiguous(uniqueValues.subList(i, i + 5))) {
+                return "Straight";
+            }
+        }
+        return "";
+    }
+
+    // Helper Method for checkStraight()
+    private static boolean isContiguous(List<Integer> values) {
+        for (int i = 1; i < values.size(); ++i) {
+            if (values.get(i) != values.get(i - 1) + 1) {
+                return false;
+            }
+        }
+        return true;
+    }
     
     public static String checkThreeOfAKind() { 
         for (String cardValue : valueCounterMap.keySet()) {
@@ -138,9 +178,9 @@ public class HandEvaluation {
         // Add Royal Flush
         // Add Straight Flush
         handCheckers.add(HandEvaluation::checkFourOfAKind);
-        // Add Flull House
+        // Add Full House
         handCheckers.add(HandEvaluation::checkFlush);
-        // Add Straight
+        handCheckers.add(() -> checkStraight(currentHand));
         handCheckers.add(HandEvaluation::checkThreeOfAKind);
         handCheckers.add(HandEvaluation::checkTwoPair);
         handCheckers.add(HandEvaluation::checkJacksOrBetter); 
