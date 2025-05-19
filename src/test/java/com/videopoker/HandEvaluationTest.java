@@ -71,6 +71,21 @@ public class HandEvaluationTest {
     }
 
     @Test
+    public void testCheckStraight() {
+        Card[] hand = {
+            new Card(10, "H"),
+            new Card('Q', "D"),
+            new Card('J', "S"),
+            new Card (9, "C"),
+            new Card(8, "D")
+        };
+        
+        HandEvaluation.valueCounter(hand);
+        String result = HandEvaluation.checkStraight(hand);
+        assertEquals("Straight", result);
+    }
+
+    @Test
     public void testCheckFlush() {
         Card[] hand = {
             new Card(3, "H"),
