@@ -99,4 +99,19 @@ public class HandEvaluationTest {
         String result = HandEvaluation.checkFlush();
         assertEquals("Flush", result);
     }
+
+    @Test
+    public void testCheckFullHouse() {
+        Card[] hand = {
+            new Card(3, "D"),
+            new Card(2, "C"),
+            new Card(3, "S"),
+            new Card (3, "S"),
+            new Card(2, "H")
+        };
+
+        HandEvaluation.valueCounter(hand);
+        String result = HandEvaluation.checkFullHouse();
+        assertEquals("Full House", result);
+    }
 }
