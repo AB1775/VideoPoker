@@ -70,10 +70,8 @@ public class HandEvaluation {
     }
     
     public static String checkFlush() { 
-        for (Character cardSuit : suitCounterMap.keySet()) {
-            int suit = suitCounterMap.get(cardSuit);
-
-            if (suit == 5) {
+        for (Map.Entry<Character, Integer> entry : suitCounterMap.entrySet()) {
+            if (entry.getValue() == 5) {
                 return "Flush";
             }
         }
