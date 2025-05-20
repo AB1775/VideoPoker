@@ -79,16 +79,14 @@ public class HandEvaluation {
         return ""; 
     }
     
-    public static String checkFourOfAKind() { 
-        for (String cardValue : valueCounterMap.keySet()) {
-            int value = valueCounterMap.get(cardValue);
-
-            if (value == 4) {
+    public static String checkFourOfAKind() {
+        for (Map.Entry<String, Integer> entry : valueCounterMap.entrySet()) {
+            if (entry.getValue() == 4) {
                 return "Four of a Kind";
             }
         }
-
-        return ""; 
+        
+        return "";
     }
     
     public static String checkFullHouse() { 
