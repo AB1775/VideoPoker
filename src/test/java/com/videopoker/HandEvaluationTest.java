@@ -114,4 +114,20 @@ public class HandEvaluationTest {
         String result = HandEvaluation.checkFullHouse();
         assertEquals("Full House", result);
     }
+
+    @Test
+    public void testCheckStraightFlush() {
+        Card[] hand = {
+            new Card(10, "H"),
+            new Card('Q', "H"),
+            new Card('J', "H"),
+            new Card (9, "H"),
+            new Card(8, "H")
+        };
+
+        HandEvaluation.suitCounter(hand);
+        HandEvaluation.valueCounter(hand);
+        String result = HandEvaluation.checkStraightFlush(hand);
+        assertEquals("Straight Flush", result);
+    }
 }
