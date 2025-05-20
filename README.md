@@ -98,7 +98,7 @@ Here are some example hands to help you understand the different scoring combina
 ### Installation
    1. **Clone the Repository**:
       ```bash
-      git clone https://github.com/your-username/VideoPoker.git
+      git clone https://github.com/AB1775/VideoPoker.git
       cd VideoPoker
       ```
 
