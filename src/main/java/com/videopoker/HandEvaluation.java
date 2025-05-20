@@ -85,7 +85,7 @@ public class HandEvaluation {
                 return "Four of a Kind";
             }
         }
-        
+
         return "";
     }
     
@@ -149,15 +149,13 @@ public class HandEvaluation {
     }
     
     public static String checkThreeOfAKind() { 
-        for (String cardValue : valueCounterMap.keySet()) {
-            int value = valueCounterMap.get(cardValue);
-
-            if (value == 3) {
+        for (Map.Entry<String, Integer> entry : valueCounterMap.entrySet()) {
+            if (entry.getValue() == 3) {
                 return "Three of a Kind";
             }
         }
-        
-        return ""; 
+
+        return "";
     }
     
     public static String checkTwoPair() { 
