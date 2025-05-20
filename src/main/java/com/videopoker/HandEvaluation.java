@@ -62,7 +62,12 @@ public class HandEvaluation {
 
     public static String checkRoyalFlush() { return ""; }
    
-    public static String checkStraightFlush() { return ""; }
+    public static String checkStraightFlush(Card[] currentHand) { 
+        if(!checkFlush().isEmpty() && !checkStraight(currentHand).isEmpty()) {
+            return "Straight Flush";
+        }
+        return ""; 
+    }
     
     public static String checkFlush() { 
         for (Character cardSuit : suitCounterMap.keySet()) {
@@ -193,7 +198,7 @@ public class HandEvaluation {
         List<Supplier<String>> handCheckers = new ArrayList<>();
 
         // Add Royal Flush
-        // Add Straight Flush
+        handCheckers.add(() -> checkStraightFlush(currentHand));
         handCheckers.add(HandEvaluation::checkFourOfAKind);
         handCheckers.add(HandEvaluation::checkFullHouse);
         handCheckers.add(HandEvaluation::checkFlush);
