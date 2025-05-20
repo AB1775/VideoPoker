@@ -161,8 +161,8 @@ public class HandEvaluation {
     public static String checkTwoPair() { 
         int pairCount = 0;
 
-        for (String cardValue : valueCounterMap.keySet()) {
-            if (valueCounterMap.get(cardValue) == 2) {
+        for (Map.Entry<String, Integer> entry : valueCounterMap.entrySet()) {
+            if (entry.getValue() == 2) {
                 ++pairCount;
             }
 
@@ -171,7 +171,7 @@ public class HandEvaluation {
             }
         }
 
-        return ""; 
+        return "";
     }
 
     public static String checkJacksOrBetter() { 
