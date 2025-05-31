@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class BankrollManager {
-    public int currentCredits;
-    public int currentBet;
+    private int currentCredits;
+    private int currentBet;
 
     Map<String, Integer> payoutMap = new HashMap<>( // Make Immutable
         Map.of(
