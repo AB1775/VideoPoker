@@ -10,7 +10,7 @@ public class Main {
             GameLogic gameLogic = new GameLogic(new BankrollManager(1000));
 
             SwingGUI swingGUI = new SwingGUI(gameLogic);
-            swingGUI.CreateAndShowGUI();
+            swingGUI.createAndShowGUI();
         });
     }
 }

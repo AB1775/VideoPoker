@@ -111,7 +111,7 @@ public class SwingGUI {
     }
 
 
-    public void CreateAndShowGUI() {
+    public void createAndShowGUI() {
         // JFrame for Main Window
         JFrame mainFrame = new JFrame("Video Poker");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
